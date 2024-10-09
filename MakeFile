@@ -1,0 +1,21 @@
+# Compiler and flags
+CC = gcc
+CFLAGS = -Wall
+
+# Output file name
+TARGET = main
+
+# All target - this will be the default action (build the program)
+all: $(TARGET)
+
+# Linking object files to create the final executable
+$(TARGET): main.o plik.o
+	$(CC) $(CFLAGS) -o $(TARGET) main.o plik.o
+
+# Compiling main.c into an object file
+main.o: main.c plik.h
+	$(CC) $(CFLAGS) -c main.c
+
+# Clean up object files and executable
+clean:
+	rm -f *.o $(TARGET)
